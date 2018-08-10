@@ -45,7 +45,7 @@ def check_for_balanced_braces():
     for c in input_string:
         if c == '(':
             myStack.push(c)
-        else:
+        elif c == ')':
             if not myStack.is_empty():
                 myStack.pop()
             else:
@@ -58,4 +58,34 @@ def check_for_balanced_braces():
         print("Brackets are not balanced")
 
 
+def matches(char1, char2):
+    str_list_1 = "[{("
+    str_list_2 = "]})"
+    return str_list_1.index(char1) == str_list_2.index(char2)
+
+
+def check_for_balanced_symbols():
+    str_list_1 = "[{("
+    str_list_2 = "]})"
+    input_string = input("Please enter the string of bracket symbols")
+    for c in input_string:
+        if c in str_list_1:
+            myStack.push(c)
+        elif c in str_list_2:
+            if myStack.size() == 0:
+                print("Brackets are not balanced")
+                return
+            else:
+                popped_elem = myStack.pop()
+                if not matches(popped_elem, c):
+                    print("Brackets are not balanced")
+                    return
+
+    if myStack.size() == 0:
+        print("Brackets are balanced")
+    else:
+        print("Brackets are not balanced")
+
+
+check_for_balanced_symbols()
 check_for_balanced_braces()
