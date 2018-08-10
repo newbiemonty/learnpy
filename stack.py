@@ -34,3 +34,28 @@ if not myStack.is_empty():
     print("Peeked item is", myStack.peek())
 else:
     print("stack is empty")
+
+'''
+Code to find if there are balanced parenthesis
+'''
+
+
+def check_for_balanced_braces():
+    input_string = input("Please enter the string of braces")
+    for c in input_string:
+        if c == '(':
+            myStack.push(c)
+        else:
+            if not myStack.is_empty():
+                myStack.pop()
+            else:
+                print("Brackets are not balanced")
+                return
+
+    if myStack.size() == 0:
+        print("Brackets are balanced")
+    else:
+        print("Brackets are not balanced")
+
+
+check_for_balanced_braces()
